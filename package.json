@@ -1,0 +1,23 @@
+{
+  "name": "get-yt-playlists",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js && npm run convert",
+    "convert": "node convert.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "ffmpeg": "^0.0.4",
+    "fluent-ffmpeg": "^2.1.2",
+    "shelljs": "^0.8.4",
+    "video-converter": "^1.0.0",
+    "youtube-dl": "^3.5.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.21.0"
+  }
+}
