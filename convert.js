@@ -1,5 +1,6 @@
 const fs = require('fs');
 const ffmpeg = require('fluent-ffmpeg');
+const { sleep } = require('sleep');
 
 
 function readfiles() {
@@ -7,11 +8,16 @@ function readfiles() {
 	const testFolder = './mp4/';
 
 	fs.readdir(testFolder, (err, files) => {
-		files.forEach(file => {
-			filenames.push('./mp4/'+file);
-		});
-		console.log(filenames);
-		tomp3(filenames);
+		if(err){
+			files.forEach(file => {
+				filenames.push('./mp4/'+file);
+			});
+			console.log(filenames);
+			tomp3(filenames);
+		}else {
+			sleep(5);
+			readfiles();
+		}
 	});
 }
 
