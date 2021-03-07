@@ -1,7 +1,6 @@
 const fs = require('fs');
 const ffmpeg = require('fluent-ffmpeg');
-const { sleep } = require('sleep');
-
+const sleep = require('system-sleep')
 
 function readfiles() {
 	let filenames = [];
