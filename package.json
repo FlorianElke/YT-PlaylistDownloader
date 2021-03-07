@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "node main.js && npm run convert",
+    "start": "node main.js",
     "convert": "node convert.js"
   },
   "author": "",
