@@ -4,9 +4,9 @@
 
 ### How to install
 
-- make sure you have nodejs installed
+- Make sure you have NodeJS installed
 
-- Download https://github.com/FlorianElke/YT-PlaylistDownloader/archive/1.0.zip or just simply git clone https://github.com/FlorianElke/YT-PlaylistDownloader.git
+- git clone https://github.com/FlorianElke/YT-PlaylistDownloader.git
 
 - cd YT-PlaylistDownloader 
 
@@ -14,4 +14,4 @@
 
 - npm start
 
-- enjoy
+- Enjoy
