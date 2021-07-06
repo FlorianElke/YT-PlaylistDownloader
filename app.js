@@ -77,7 +77,7 @@ app.get('/ye', (req, res)=>{
 			}
 			video.on('end', ()=>{
 				require('./convert').run();
-			);
+			});
 		});
 
 		//fetch the next video in the playlist
