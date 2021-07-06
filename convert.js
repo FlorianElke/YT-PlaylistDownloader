@@ -1,35 +1,30 @@
-const fs = require('fs');
-const ffmpeg = require('fluent-ffmpeg');
-const sleep = require('system-sleep')
-
-function readfiles() {
-	let filenames = [];
-	const testFolder = './mp4/';
-
-	fs.readdir(testFolder, (err, files) => {
-		if(err){
-			files.forEach(file => {
-				filenames.push('./mp4/'+file);
+//requiring path and fs modules
+module.exports.run = ()=>{
+	const path = require('path');
+	const fs = require('fs');
+	//joining path of directory 
+	const directoryPath = path.join(__dirname, 'tmp');
+	//passsing directoryPath and callback function
+	fs.readdir(directoryPath, function (err, files) {
+	//handling error
+		if (err) {
+			return console.log('Unable to scan directory: ' + err);
+		} 
+		//listing all files using forEach
+		files.forEach( (file) =>{
+		// Do whatever you want to do with the file
+			var converter = require('video-converter');
+			var pathToFfmpeg = require('ffmpeg-static'); 
+			converter.setFfmpegPath(pathToFfmpeg, function(err) {
+				if (err) throw err;
 			});
-			console.log(filenames);
-			tomp3(filenames);
-		}else {
-			sleep(5);
-			readfiles();
-		}
-	});
-}
-
-function tomp3(filename) {
-	filename.forEach((element)=>{
-		console.log('\nConverting File to mp3...');
-		const songnamenew = element.substring(6, element.length -4);
-		ffmpeg({source:element})
-			.toFormat('mp3')
-			.saveToFile('./mp3/'+songnamenew+ '.mp3', ()=>{
+			// convert mp4 to mp3
+			converter.convert('./tmp/'+ file, './mp3/' + file.split('.mp4')[0] + '.mp3', function(err) {
+				if (err) throw err;
 				console.log('done');
-				
-			} );
+			});
+		}
+		);
+	
 	});
-}
-readfiles();
+};
